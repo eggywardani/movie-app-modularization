@@ -1,6 +1,7 @@
 package com.eggy.movieapp.detail
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -14,9 +15,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
 
-    companion object {
-        const val EXTRA_DATA = "extra_data"
-    }
 
     private val detailViewModel: DetailViewModel by viewModel()
     private lateinit var binding: ActivityDetailBinding
@@ -41,7 +39,7 @@ class DetailActivity : AppCompatActivity() {
         binding.content.tvRating.text = detail?.voteAverage.toString()
 
         if (detail?.backdropPath.isNullOrEmpty()){
-            loadImage(BuildConfig.BASE_IMAGE_URL + detail?.posterPath, binding.content.ivPoster2)
+            binding.content.ivPoster2.visibility = View.GONE
         }
 
 
@@ -84,6 +82,9 @@ class DetailActivity : AppCompatActivity() {
             binding.fab.setImageResource(R.drawable.ic_favorite_border)
         }
 
+    }
+    companion object {
+        const val EXTRA_DATA = "extra_data"
     }
 
 

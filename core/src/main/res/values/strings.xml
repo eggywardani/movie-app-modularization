@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_description">Image Description</string>
+    <string name="title">Title</string>
+    <string name="rating">0.0</string>
+</resources>

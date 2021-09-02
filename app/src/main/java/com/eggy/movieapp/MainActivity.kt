@@ -27,14 +27,9 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         navController = navHost.navController
 
-        binding.apply {
-            bottomNav.setupWithNavController(navController)
-            bottomNav.setOnNavigationItemSelectedListener {
-                if (it.itemId != bottomNav.selectedItemId)
-                    NavigationUI.onNavDestinationSelected(it, navController)
-                    true
 
-            }
-        }
+        NavigationUI.setupWithNavController(binding.bottomNav, navController)
+
+
     }
 }

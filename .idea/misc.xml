@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Dicoding/android-expert/submission/MovieApp/app/src/main/res/drawable/bg_card.xml" value="0.2078125" />
+        <entry key="..\:/Dicoding/android-expert/submission/MovieApp/app/src/main/res/drawable/bg_circle.xml" value="0.1921875" />
         <entry key="..\:/Dicoding/android-expert/submission/MovieApp/app/src/main/res/drawable/bg_main.xml" value="0.1921875" />
         <entry key="..\:/Dicoding/android-expert/submission/MovieApp/app/src/main/res/drawable/bg_poster.xml" value="0.2078125" />
         <entry key="..\:/Dicoding/android-expert/submission/MovieApp/app/src/main/res/drawable/bg_rating.xml" value="0.2078125" />
@@ -23,6 +24,10 @@
         <entry key="..\:/Dicoding/android-expert/submission/MovieApp/app/src/main/res/layout/view_empty.xml" value="0.19166666666666668" />
         <entry key="..\:/Dicoding/android-expert/submission/MovieApp/app/src/main/res/layout/view_error.xml" value="0.19166666666666668" />
         <entry key="..\:/Dicoding/android-expert/submission/MovieApp/app/src/main/res/menu/bottom_nav.xml" value="0.19166666666666668" />
+        <entry key="..\:/Dicoding/android-expert/submission/MovieApp/core/src/main/res/drawable/bg_circle.xml" value="0.1921875" />
+        <entry key="..\:/Dicoding/android-expert/submission/MovieApp/core/src/main/res/layout/item_list_movie.xml" value="0.17604166666666668" />
+        <entry key="..\:/Dicoding/android-expert/submission/MovieApp/favorite/src/main/res/layout/fragment_favorite.xml" value="0.17604166666666668" />
+        <entry key="..\:/Dicoding/android-expert/submission/MovieApp/favorite/src/main/res/layout/view_empty.xml" value="0.17604166666666668" />
       </map>
     </option>
   </component>

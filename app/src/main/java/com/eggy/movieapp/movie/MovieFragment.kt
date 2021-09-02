@@ -45,12 +45,12 @@ class MovieFragment : Fragment() {
             movieViewModel.movies.observe(viewLifecycleOwner) { movies ->
                 if (movies != null) {
                     when (movies) {
-                        is Resource.Loading<*> -> binding?.progress?.visibility = View.VISIBLE
-                        is Resource.Success<*> -> {
+                        is com.eggy.movieapp.core.data.Resource.Loading<*> -> binding?.progress?.visibility = View.VISIBLE
+                        is com.eggy.movieapp.core.data.Resource.Success<*> -> {
                             binding?.progress?.visibility = View.GONE
                             adapter.setData(movies.data)
                         }
-                        is Resource.Error<*> -> {
+                        is com.eggy.movieapp.core.data.Resource.Error<*> -> {
                             binding?.progress?.visibility = View.GONE
                             binding?.viewError?.root?.visibility = View.VISIBLE
                             binding?.viewError?.tvError?.text =
