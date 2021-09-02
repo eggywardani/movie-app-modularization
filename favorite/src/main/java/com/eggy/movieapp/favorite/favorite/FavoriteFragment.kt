@@ -36,7 +36,8 @@ class FavoriteFragment : Fragment() {
 
 
             adapter.onItemClick = {
-                val intent = Intent(context, DetailActivity::class.java)
+                val intent =
+                    Intent(requireActivity().applicationContext, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.EXTRA_DATA, it)
                 startActivity(intent)
             }
