@@ -10,6 +10,8 @@ buildscript {
         logging_interceptor_version = "4.9.0"
         leak_canary_version="2.4"
         lottie_version ="4.1.0"
+        sql_chiper_version = "4.4.0"
+        sqlite_version ="2.1.0"
 
         kotlin_version = '1.4.21'
         cardview_version = "1.0.0"

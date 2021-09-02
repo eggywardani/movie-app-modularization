@@ -7,6 +7,8 @@ import com.eggy.movieapp.core.data.source.remote.RemoteDatSource
 import com.eggy.movieapp.core.data.source.remote.network.ApiService
 import com.eggy.movieapp.core.domain.repository.IMovieRepository
 import com.eggy.movieapp.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -16,16 +18,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
+
     factory {
         get<MovieDatabase>().movieDao()
     }
     single {
+        val passphrase = SQLiteDatabase.getBytes("wardani".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             MovieDatabase::class.java,
             "movies.db"
 
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration().openHelperFactory(factory).build()
     }
 }
 
