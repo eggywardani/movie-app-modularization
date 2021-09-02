@@ -1,4 +1,4 @@
-package com.eggy
+package com.eggy.movieapp
 
 import android.app.Application
 import com.eggy.movieapp.core.di.databaseModule

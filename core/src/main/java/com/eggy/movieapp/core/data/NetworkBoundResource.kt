@@ -9,30 +9,30 @@ import kotlinx.coroutines.flow.*
 @SuppressLint("CheckResult")
 abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecutors: AppExecutors) {
 
-    private val result: Flow<com.eggy.movieapp.core.data.Resource<ResultType>> = flow {
-        emit(com.eggy.movieapp.core.data.Resource.Loading())
+    private val result: Flow<Resource<ResultType>> = flow {
+        emit(Resource.Loading())
         val dbSource = loadFromDB().first()
         if (shouldFetch(dbSource)) {
-            emit(com.eggy.movieapp.core.data.Resource.Loading())
+            emit(Resource.Loading())
             when (val apiResponse = createCall().first()) {
                 is ApiResponse.Success -> {
                     saveCallResult(apiResponse.data)
                     emitAll(loadFromDB().map {
-                        com.eggy.movieapp.core.data.Resource.Success(it)
+                        Resource.Success(it)
                     })
                 }
                 is ApiResponse.Empty -> {
                     emitAll(loadFromDB().map {
-                        com.eggy.movieapp.core.data.Resource.Success(it)
+                        Resource.Success(it)
                     })
                 }
                 is ApiResponse.Error -> {
                     onFetchFailed()
-                    emit(com.eggy.movieapp.core.data.Resource.Error<ResultType>(apiResponse.message))
+                    emit(Resource.Error<ResultType>(apiResponse.message))
                 }
             }
         } else {
-            emitAll(loadFromDB().map { com.eggy.movieapp.core.data.Resource.Success(it) })
+            emitAll(loadFromDB().map { Resource.Success(it) })
         }
     }
 
@@ -47,5 +47,5 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecut
 
     protected abstract suspend fun saveCallResult(data: RequestType)
 
-    fun asFlow(): Flow<com.eggy.movieapp.core.data.Resource<ResultType>> = result
+    fun asFlow(): Flow<Resource<ResultType>> = result
 }

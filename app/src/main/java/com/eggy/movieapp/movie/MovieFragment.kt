@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eggy.movieapp.R
 import com.eggy.movieapp.core.data.Resource
@@ -45,12 +44,12 @@ class MovieFragment : Fragment() {
             movieViewModel.movies.observe(viewLifecycleOwner) { movies ->
                 if (movies != null) {
                     when (movies) {
-                        is com.eggy.movieapp.core.data.Resource.Loading<*> -> binding?.progress?.visibility = View.VISIBLE
-                        is com.eggy.movieapp.core.data.Resource.Success<*> -> {
+                        is Resource.Loading<*> -> binding?.progress?.visibility = View.VISIBLE
+                        is Resource.Success<*> -> {
                             binding?.progress?.visibility = View.GONE
                             adapter.setData(movies.data)
                         }
-                        is com.eggy.movieapp.core.data.Resource.Error<*> -> {
+                        is Resource.Error<*> -> {
                             binding?.progress?.visibility = View.GONE
                             binding?.viewError?.root?.visibility = View.VISIBLE
                             binding?.viewError?.tvError?.text =

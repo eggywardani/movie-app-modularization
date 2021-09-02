@@ -13,11 +13,13 @@ import kotlinx.coroutines.flow.map
 
 class MovieRepository(
     private val remoteDatSource: RemoteDatSource,
-    private val localDataSource: com.eggy.movieapp.core.data.source.local.LocalDataSource,
+    private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) : IMovieRepository {
-    override fun getAllMovies(): Flow<com.eggy.movieapp.core.data.Resource<List<Movie>>> =
-        object : com.eggy.movieapp.core.data.NetworkBoundResource<List<Movie>, List<MovieItem>>(appExecutors) {
+    override fun getAllMovies(): Flow<Resource<List<Movie>>> =
+        object : com.eggy.movieapp.core.data.NetworkBoundResource<List<Movie>, List<MovieItem>>(
+            appExecutors
+        ) {
             override fun loadFromDB(): Flow<List<Movie>> {
                 return localDataSource.getAllMovies().map {
                     DataMapper.mapEntitiesToDomain(it)
@@ -35,9 +37,6 @@ class MovieRepository(
                 localDataSource.insertMovies(movieList)
             }
         }.asFlow()
-
-
-
 
 
     override fun getFavoriteMovies(): Flow<List<Movie>> {
