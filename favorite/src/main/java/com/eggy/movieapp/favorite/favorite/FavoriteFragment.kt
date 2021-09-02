@@ -30,15 +30,13 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         if (activity != null) {
             loadKoinModules(favoriteModule)
             val adapter = MovieAdapter()
 
 
             adapter.onItemClick = {
-                val intent = Intent(requireContext(), DetailActivity::class.java)
+                val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.EXTRA_DATA, it)
                 startActivity(intent)
             }
